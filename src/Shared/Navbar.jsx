@@ -12,17 +12,22 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/cart">
-          <IoCartOutline />
+          <IoCartOutline className="pt-0 text-xl" />
         </Link>
       </li>
       <li>
-        <details className="relative z-10">
-          <summary>Language</summary>
-          <ul className="flex flex-col">
-            <Link to="/english">English</Link>
-            <Link to="/bangla">Bangla</Link>
+        <div className="dropdown dropdown-hover dropdown-bottom">
+          <div tabIndex={0} role="button" className="m-1">
+            Language
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu pr-8 shadow bg-base-100 rounded-box"
+          >
+            <li>English</li>
+            <li>Bangla</li>
           </ul>
-        </details>
+        </div>
       </li>
     </>
   );
