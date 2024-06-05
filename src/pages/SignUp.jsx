@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import SectionTitle from "../components/SectionTitle";
+import useAuth from "../hooks/useAuth";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const SignUp = () => {
+  const { createUser, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
@@ -24,22 +26,12 @@ const SignUp = () => {
     try {
       const { data } = await axios.post(image_hosting_api, formData);
       console.log(data.data.display_url);
+      const result = await createUser(email, password);
+      console.log(result);
+      await updateUserProfile(name, data?.data?.display_url);
     } catch (err) {
       console.log(err);
     }
-    // try {
-    //   const res = await axios.post(image_hosting_api, formData);
-    //   const data = res.data;
-    //   if (data.success) {
-    //     const image = data.data.url;
-
-    //     setImageUrl(image);
-    //   } else {
-    //     console.error("Error uploading image:", data.error.message);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   return (
