@@ -1,7 +1,13 @@
 import { IoCartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+// import avatarImg from "../../src/assets/non-user.jpg";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  const handleLogOut = () => {
+    logOut();
+  };
   const links = (
     <>
       <li>
@@ -64,7 +70,29 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Join Us</a>
+        {user ? (
+          <div className="dropdown dropdown-bottom dropdown-end">
+            <img
+              alt=""
+              tabIndex={0}
+              role="button"
+              className="w-10 h-10 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-gray-300 dark:ring-offset-gray-100 mr-2"
+              src={user.displayURL}
+            />
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-28 text-left"
+            >
+              <li>Update Profile</li>
+              <li>Dashboard</li>
+              <li>
+                <Link onClick={handleLogOut}>Log Out</Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link to="/signUp">Join Us</Link>
+        )}
       </div>
     </div>
   );
