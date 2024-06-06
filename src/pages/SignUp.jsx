@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import BlankSpace from "../components/BlankSpace";
 import SectionTitle from "../components/SectionTitle";
 import useAuth from "../hooks/useAuth";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -36,6 +38,7 @@ const SignUp = () => {
 
   return (
     <section className="min-h-screen">
+      <BlankSpace></BlankSpace>
       <div className="w-full md:max-w-3xl mx-auto mt-10 p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
         <SectionTitle heading={"Sign up please"}></SectionTitle>
 
@@ -140,6 +143,12 @@ const SignUp = () => {
             <input className="btn btn-primary" type="submit" value="Sign Up" />
           </div>
         </form>
+        <p className="text-xs text-center sm:px-6 dark:text-gray-600 font-poppins mt-2">
+          Already have an account?
+          <Link className="underline text-blue-600" to="/login">
+            Login
+          </Link>
+        </p>
         <div className="flex items-center w-full my-4">
           <hr className="w-full dark:text-gray-600" />
           <p className="px-3 dark:text-gray-600">OR</p>

@@ -28,17 +28,21 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content z-[1] menu pr-8 shadow bg-base-100 rounded-box"
+            className="dropdown-content z-[1] menu pr-8 shadow bg-base-100 rounded-box text-black"
           >
-            <li>English</li>
-            <li>Bangla</li>
+            <li>
+              <Link>English</Link>
+            </li>
+            <li>
+              <Link>Bangla</Link>
+            </li>
           </ul>
         </div>
       </li>
     </>
   );
   return (
-    <div className="navbar ">
+    <div className="navbar fixed bg-red-500 text-white z-10 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,12 +63,12 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black md:text-white"
           >
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">MediConnect</a>
+        <a className="btn btn-ghost text-xl font-platypi">MediConnect</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -91,7 +95,9 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <Link to="/signUp">Join Us</Link>
+          <Link className="btn bg-blue-600 border-0 text-white" to="/signUp">
+            Join Us
+          </Link>
         )}
       </div>
     </div>
