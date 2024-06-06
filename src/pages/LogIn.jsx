@@ -1,9 +1,13 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import BlankSpace from "../components/BlankSpace";
 import SectionTitle from "../components/SectionTitle";
+import useAuth from "../hooks/useAuth";
 
 const LogIn = () => {
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -12,7 +16,20 @@ const LogIn = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    signIn(data.email, data.password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      Swal.fire({
+        title: "User Login Successful.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+      navigate("/");
+    });
   };
   return (
     <section className="min-h-screen">
