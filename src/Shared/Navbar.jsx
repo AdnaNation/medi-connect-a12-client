@@ -42,7 +42,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar fixed bg-red-500 text-white z-10 ">
+    <div className="navbar fixed z-10 bg-red-500 text-white  ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -81,11 +81,11 @@ const Navbar = () => {
               tabIndex={0}
               role="button"
               className="w-10 h-10 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-gray-300 dark:ring-offset-gray-100 mr-2"
-              src={user.displayURL}
+              src={user?.photoURL}
             />
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-28 text-left"
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-28 text-left text-black"
             >
               <li>Update Profile</li>
               <li>Dashboard</li>
