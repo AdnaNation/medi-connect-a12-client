@@ -12,7 +12,7 @@ const useSeller = () => {
       console.log("asking", user);
       const res = await axiosSecure.get(`/users/seller/${user.email}`);
       console.log(res.data);
-      return res.data?.admin;
+      return res.data?.seller;
     },
   });
   return [isSeller, isSellerLoading];
