@@ -36,7 +36,6 @@ const SignUp = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(image_hosting_api, formData);
-      setLoading(false);
       setError("");
       console.log(data.data.display_url);
       await createUser(email, password);
@@ -66,6 +65,7 @@ const SignUp = () => {
       });
       await navigate("/login");
     } catch (err) {
+      setLoading(false);
       setError("The email you provided is already signed up.");
       console.log(err);
     }

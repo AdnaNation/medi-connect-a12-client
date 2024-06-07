@@ -88,7 +88,9 @@ const Navbar = () => {
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-28 text-left text-black"
             >
               <li>Update Profile</li>
-              <li>Dashboard</li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
               <li>
                 <Link onClick={handleLogOut}>Log Out</Link>
               </li>
