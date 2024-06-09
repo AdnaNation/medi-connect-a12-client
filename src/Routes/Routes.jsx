@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import ManageMedicines from "../pages/Dashboard/ManageMedicines";
 import SellerHome from "../pages/Dashboard/SellerHome";
 import Home from "../pages/Home/Home";
 import LogIn from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 const router = createBrowserRouter([
   {
@@ -35,8 +37,20 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "sellerHome",
-        element: <SellerHome></SellerHome>,
+        path: "/dashboard",
+        element: (
+          <SellerRoute>
+            <SellerHome></SellerHome>
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "manage-medicines",
+        element: (
+          <SellerRoute>
+            <ManageMedicines></ManageMedicines>
+          </SellerRoute>
+        ),
       },
     ],
   },

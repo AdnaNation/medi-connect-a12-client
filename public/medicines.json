@@ -1,0 +1,156 @@
+[
+  {
+    "itemName": "Paracetamol",
+    "itemGenericName": "Acetaminophen",
+    "shortDescription": "Used to relieve pain and reduce fever.",
+    "image": "https://example.com/images/paracetamol.jpg",
+    "category": "Tablet",
+    "company": "Beximco Pharmaceuticals Ltd",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 2.5,
+    "discountPercentage": 0
+  },
+  {
+    "itemName": "Amoxicillin",
+    "itemGenericName": "Amoxicillin",
+    "shortDescription": "Antibiotic used to treat various bacterial infections.",
+    "image": "https://example.com/images/amoxicillin.jpg",
+    "category": "Capsule",
+    "company": "Square Pharmaceuticals Ltd",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 5.0,
+    "discountPercentage": 10
+  },
+  {
+    "itemName": "Aspirin",
+    "itemGenericName": "Acetylsalicylic Acid",
+    "shortDescription": "Used to reduce pain, fever, or inflammation.",
+    "image": "https://example.com/images/aspirin.jpg",
+    "category": "Tablet",
+    "company": "Renata Limited",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 1.2,
+    "discountPercentage": 0
+  },
+  {
+    "itemName": "Cetirizine",
+    "itemGenericName": "Cetirizine Hydrochloride",
+    "shortDescription": "Antihistamine used to relieve allergy symptoms.",
+    "image": "https://example.com/images/cetirizine.jpg",
+    "category": "Tablet",
+    "company": "ACI Limited",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 3.0,
+    "discountPercentage": 5
+  },
+  {
+    "itemName": "Metformin",
+    "itemGenericName": "Metformin Hydrochloride",
+    "shortDescription": "Used to improve blood sugar control in people with type 2 diabetes.",
+    "image": "https://example.com/images/metformin.jpg",
+    "category": "Tablet",
+    "company": "Incepta Pharmaceuticals Ltd",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 4.5,
+    "discountPercentage": 0
+  },
+  {
+    "itemName": "Omeprazole",
+    "itemGenericName": "Omeprazole",
+    "shortDescription": "Used to treat gastroesophageal reflux disease (GERD) and other stomach issues.",
+    "image": "https://example.com/images/omeprazole.jpg",
+    "category": "Capsule",
+    "company": "Eskayef Pharmaceuticals Ltd",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 6.0,
+    "discountPercentage": 15
+  },
+  {
+    "itemName": "Ibuprofen",
+    "itemGenericName": "Ibuprofen",
+    "shortDescription": "Nonsteroidal anti-inflammatory drug (NSAID) used to reduce fever and treat pain or inflammation.",
+    "image": "https://example.com/images/ibuprofen.jpg",
+    "category": "Tablet",
+    "company": "Aristopharma Ltd",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 2.0,
+    "discountPercentage": 0
+  },
+  {
+    "itemName": "Ciprofloxacin",
+    "itemGenericName": "Ciprofloxacin",
+    "shortDescription": "Antibiotic used to treat a variety of bacterial infections.",
+    "image": "https://example.com/images/ciprofloxacin.jpg",
+    "category": "Tablet",
+    "company": "Orion Pharma Ltd",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 8.0,
+    "discountPercentage": 10
+  },
+  {
+    "itemName": "Vitamin C",
+    "itemGenericName": "Ascorbic Acid",
+    "shortDescription": "Supplement used to prevent or treat low levels of vitamin C.",
+    "image": "https://example.com/images/vitamin_c.jpg",
+    "category": "Tablet",
+    "company": "Opsonin Pharma Limited",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 1.5,
+    "discountPercentage": 0
+  },
+  {
+    "itemName": "Losartan",
+    "itemGenericName": "Losartan Potassium",
+    "shortDescription": "Used to treat high blood pressure (hypertension).",
+    "image": "https://example.com/images/losartan.jpg",
+    "category": "Tablet",
+    "company": "Drug International Ltd",
+    "itemMassUnit": "Mg",
+    "perUnitPrice": 7.0,
+    "discountPercentage": 5
+  },
+  {
+    "itemName": "Cough Syrup",
+    "itemGenericName": "Dextromethorphan",
+    "shortDescription": "Used to relieve cough caused by the common cold or other conditions.",
+    "image": "https://example.com/images/cough_syrup.jpg",
+    "category": "Syrup",
+    "company": "Acme Laboratories Ltd",
+    "itemMassUnit": "Ml",
+    "perUnitPrice": 3.5,
+    "discountPercentage": 0
+  },
+  {
+    "itemName": "Insulin Injection",
+    "itemGenericName": "Insulin",
+    "shortDescription": "Used to control high blood sugar in people with diabetes.",
+    "image": "https://example.com/images/insulin.jpg",
+    "category": "Injection",
+    "company": "Novo Nordisk",
+    "itemMassUnit": "Ml",
+    "perUnitPrice": 20.0,
+    "discountPercentage": 0
+  },
+  {
+    "itemName": "Betnovate Ointment",
+    "itemGenericName": "Betamethasone Valerate",
+    "shortDescription": "Used to treat various skin conditions like eczema and dermatitis.",
+    "image": "https://example.com/images/betnovate.jpg",
+    "category": "Ointment",
+    "company": "GlaxoSmithKline",
+    "itemMassUnit": "G",
+    "perUnitPrice": 7.0,
+    "discountPercentage": 5
+  },
+  {
+    "itemName": "Ventolin Inhaler",
+    "itemGenericName": "Salbutamol",
+    "shortDescription": "Used to treat or prevent bronchospasm in people with reversible obstructive airway disease.",
+    "image": "https://example.com/images/ventolin.jpg",
+    "category": "Inhaler",
+    "company": "GlaxoSmithKline",
+    "itemMassUnit": "Ml",
+    "perUnitPrice": 15.0,
+    "discountPercentage": 10
+  }
+]

@@ -16,7 +16,7 @@ const Dashboard = () => {
             {isSeller && (
               <ul className="pt-2 pb-4 space-y-5 text-lg">
                 <li className="dark:bg-gray-100 dark:text-gray-900">
-                  <NavLink to="/dashboard/sellerHome">Seller Home</NavLink>
+                  <NavLink to="/dashboard">Seller Home</NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manage-medicines">
@@ -60,7 +60,9 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <Outlet></Outlet>
+        <div className="flex-grow">
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );
