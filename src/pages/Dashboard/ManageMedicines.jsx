@@ -1,11 +1,71 @@
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaUtensils } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import SectionTitle from "../../components/SectionTitle";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const ManageMedicines = () => {
+  const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const { data: medicines = [], refetch } = useQuery({
+    queryKey: ["medicines", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/medicines/${user.email}`);
+
+      return res.data;
+    },
+  });
+
+  const onSubmit = async (data) => {
+    // console.log(data);
+    setLoading(true);
+    const imageFile = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    if (res.data.success) {
+      const medicine = {
+        medicineName: data.medicineName,
+        genericName: data.genericName,
+        image: res.data.data.display_url,
+        category: data.category,
+        company: data.company,
+        massUnit: data.massUnit,
+        unitPrice: parseFloat(data.unitPrice),
+        discount: parseFloat(data.discount),
+        description: data.description,
+        sellerEmail: user.email,
+      };
+
+      const medicineRes = await axiosSecure.post("/medicine", medicine);
+      if (medicineRes.data.insertedId) {
+        // show success popup
+        reset();
+        refetch();
+        setLoading(false);
+        navigate("/dashboard/manage-medicines");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.name} is added to the page.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
   };
   return (
     <div className="text-center">
@@ -98,7 +158,7 @@ const ManageMedicines = () => {
             <div className="flex gap-6 flex-col md:flex-row">
               <div className="form-control w-full my-6">
                 <label className="label">
-                  <span className="label-text">Mass Unit (Mg.)*</span>
+                  <span className="label-text">Mass Unit (Mg or Ml)*</span>
                 </label>
                 <input
                   type="text"
@@ -115,7 +175,7 @@ const ManageMedicines = () => {
                 <input
                   type="text"
                   placeholder="Per Unit Price"
-                  {...register("genericName", { required: true })}
+                  {...register("unitPrice", { required: true })}
                   required
                   className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
                 />
@@ -160,7 +220,7 @@ const ManageMedicines = () => {
             </div>
 
             <button className="btn">
-              Add Item <FaUtensils className="ml-4"></FaUtensils>
+              {loading ? "Adding" : "Add Medicine"}
             </button>
           </form>
         </div>
@@ -168,6 +228,38 @@ const ManageMedicines = () => {
           <button>close</button>
         </form>
       </dialog>
+
+      <SectionTitle heading="My Medicine List"></SectionTitle>
+      <p className=" text-left font-bold underline ml-1">
+        My Medicines: ({medicines.length})
+      </p>
+      <div className="overflow-x-auto">
+        <table className="table table-zebra">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Generic Name</th>
+              <th>Company</th>
+              <th>Mass Unit</th>
+              <th>Unit Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {medicines.map((medicine, index) => (
+              <tr key={medicine._id}>
+                <th>{index + 1}</th>
+                <td>{medicine.medicineName}</td>
+                <td>{medicine.genericName}</td>
+                <td>{medicine.company.split(" ")[0]}</td>
+                <td>{medicine.massUnit}</td>
+                <td>{medicine.unitPrice} tk</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const useSeller = () => {
     queryKey: [user?.email, "isSeller"],
     enabled: !loading,
     queryFn: async () => {
-      console.log("asking", user);
+      // console.log("asking", user);
       const res = await axiosSecure.get(`/users/seller/${user.email}`);
       console.log(res.data);
       return res.data?.seller;
