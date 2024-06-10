@@ -33,7 +33,7 @@ const LogIn = () => {
           popup: "animate__animated animate__fadeOutUp",
         },
       });
-      navigate(from, { replace: true });
+      navigate(from);
     });
   };
   return (

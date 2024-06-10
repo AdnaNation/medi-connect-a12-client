@@ -8,7 +8,7 @@ const SocialLogin = () => {
   const { googleSignIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state || "/";
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
@@ -32,7 +32,7 @@ const SocialLogin = () => {
           popup: "animate__animated animate__fadeOutUp",
         },
       });
-      navigate(from, { replace: true });
+      navigate(from);
     });
   };
   return (

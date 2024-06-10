@@ -5,6 +5,7 @@ import ManageMedicines from "../pages/Dashboard/ManageMedicines";
 import SellerHome from "../pages/Dashboard/SellerHome";
 import Home from "../pages/Home/Home";
 import LogIn from "../pages/LogIn";
+import Shop from "../pages/Shop";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LogIn></LogIn>,
+      },
+      {
+        path: "/shop",
+        element: (
+          <PrivateRoute>
+            <Shop></Shop>
+          </PrivateRoute>
+        ),
       },
     ],
   },

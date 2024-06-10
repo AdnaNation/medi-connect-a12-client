@@ -18,7 +18,7 @@ const SellerRoute = ({ children }) => {
   if (user && isSeller) {
     return children;
   }
-  return <Navigate to="/" state={{ from: location }} replace></Navigate>;
+  return <Navigate to="/login" state={location.pathname} replace="true" />;
 };
 
 export default SellerRoute;
