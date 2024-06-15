@@ -2,9 +2,11 @@ import { IoCartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 // import avatarImg from "../../src/assets/non-user.jpg";
 import useAuth from "../hooks/useAuth";
+import useCart from "../hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [cart] = useCart();
   const handleLogOut = () => {
     logOut();
   };
@@ -22,6 +24,7 @@ const Navbar = () => {
       <li>
         <Link to="/cart">
           <IoCartOutline className="pt-0 text-xl" />
+          <sup>{cart.length}</sup>
         </Link>
       </li>
       <li>

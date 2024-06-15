@@ -1,12 +1,12 @@
 import BlankSpace from "../components/BlankSpace";
 
-const MedicineCategory = () => {
+const Cart = () => {
   return (
     <div>
       <BlankSpace></BlankSpace>
-      <h1>medicine category</h1>
+      <h2>cart</h2>
     </div>
   );
 };
 
-export default MedicineCategory;
+export default Cart;

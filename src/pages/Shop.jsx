@@ -2,14 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { TiEyeOutline } from "react-icons/ti";
+import Swal from "sweetalert2";
 import BlankSpace from "../components/BlankSpace";
 import SectionTitle from "../components/SectionTitle";
+import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useCart from "../hooks/useCart";
 
 const Shop = () => {
+  const { user } = useAuth();
   const [selectedId, SetSelectedId] = useState("6665bafce5c527039325622a");
   const axiosSecure = useAxiosSecure();
-  const { data: medicines = [], refetch } = useQuery({
+  const [, refetch] = useCart();
+  const { data: medicines = [] } = useQuery({
     queryKey: ["medicines"],
     queryFn: async () => {
       const res = await axiosSecure.get("/medicines");
@@ -28,6 +33,31 @@ const Shop = () => {
   const handleDetail = (id) => {
     SetSelectedId(id);
     refetch();
+  };
+  const handleAddToCart = (medicine) => {
+    const cartItem = {
+      image: medicine.image,
+      medicineId: medicine._id,
+      email: user.email,
+      medicineName: medicine.medicineName,
+      unitPrice: medicine.unitPrice,
+      company: medicine.company,
+    };
+    // console.log(cartItem);
+    axiosSecure.post("/carts", cartItem).then((res) => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${medicine.medicineName} added to your cart`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // refetch cart to update the cart items count
+        refetch();
+      }
+    });
   };
   return (
     <div className="min-h-screen">
@@ -66,7 +96,10 @@ const Shop = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="px-1 bg-gray-300 rounded-lg">
+                  <button
+                    onClick={() => handleAddToCart(medicine)}
+                    className="px-1 bg-gray-300 rounded-lg"
+                  >
                     Select
                   </button>
                 </td>
