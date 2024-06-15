@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { TbCurrencyTaka } from "react-icons/tb";
 import { TiEyeOutline } from "react-icons/ti";
 import BlankSpace from "../components/BlankSpace";
 import SectionTitle from "../components/SectionTitle";
@@ -22,10 +23,11 @@ const Shop = () => {
       return res.data;
     },
   });
-  console.log(medicine);
+  // console.log(medicine);
 
   const handleDetail = (id) => {
     SetSelectedId(id);
+    refetch();
   };
   return (
     <div className="min-h-screen">
@@ -73,12 +75,30 @@ const Shop = () => {
           </tbody>
         </table>
 
-        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">Hello!</h3>
-            <p className="py-4">
-              Press ESC key or click the button below to close
-            </p>
+        <dialog id="my_modal_5" className="modal">
+          <div className="modal-box  w-11/12 max-w-5xl">
+            <div className="flex flex-col md:flex-row gap-3 items-center">
+              <div className="bg-gray-100">
+                <img
+                  className="w-40 md:w-80 h-36 md:h-72 mx-auto md:mx-0"
+                  src={medicine.image}
+                  alt=""
+                />
+              </div>
+              <div className="space-y-2">
+                <p className="text-2xl md:text-3xl font-bold">
+                  {medicine.medicineName}
+                </p>
+                <p>Generic Name: {medicine.genericName}</p>
+                <p>Category: {medicine.category}</p>
+                <p>Company: {medicine.company}</p>
+                <p className="font-bold">{medicine.description}</p>
+                <p>Mass Unit: {medicine.massUnit}</p>
+                <p className="flex items-center">
+                  Unit Price: {medicine.unitPrice} <TbCurrencyTaka />
+                </p>
+              </div>
+            </div>
             <div className="modal-action">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}

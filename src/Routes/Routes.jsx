@@ -5,6 +5,7 @@ import ManageMedicines from "../pages/Dashboard/ManageMedicines";
 import SellerHome from "../pages/Dashboard/SellerHome";
 import Home from "../pages/Home/Home";
 import LogIn from "../pages/LogIn";
+import MedicineCategory from "../pages/MedicineCategory";
 import Shop from "../pages/Shop";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Shop></Shop>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/category",
+        element: (
+          <PrivateRoute>
+            <MedicineCategory></MedicineCategory>
           </PrivateRoute>
         ),
       },
