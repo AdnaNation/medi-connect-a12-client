@@ -41,7 +41,9 @@ const Shop = () => {
       email: user.email,
       medicineName: medicine.medicineName,
       unitPrice: medicine.unitPrice,
+      discount: medicine.discount,
       company: medicine.company,
+      quantity: 1,
     };
     // console.log(cartItem);
     axiosSecure.post("/carts", cartItem).then((res) => {
