@@ -54,7 +54,7 @@ const Shop = () => {
           icon: "success",
           title: `${medicine.medicineName} added to your cart`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 1100,
         });
         // refetch cart to update the cart items count
         refetch();

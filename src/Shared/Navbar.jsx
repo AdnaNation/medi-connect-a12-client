@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 // import avatarImg from "../../src/assets/non-user.jpg";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
+import useSeller from "../hooks/useSeller";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [isSeller] = useSeller();
   const [cart] = useCart();
   const handleLogOut = () => {
     logOut();
@@ -21,12 +23,14 @@ const Navbar = () => {
       <li>
         <Link to="/category">Category</Link>
       </li>
+
       <li>
         <Link to="/cart">
           <IoCartOutline className="pt-0 text-xl" />
-          <sup>{cart.length}</sup>
+          {user ? <sup>{cart.length}</sup> : <sup>0</sup>}
         </Link>
       </li>
+
       <li>
         <div className="dropdown dropdown-hover dropdown-bottom">
           <div tabIndex={0} role="button" className="m-1">
@@ -94,9 +98,17 @@ const Navbar = () => {
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-28 text-left text-black"
             >
               <li>Update Profile</li>
-              <li>
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
+              {user && isSeller && (
+                <li>
+                  <Link to="/dashboard/sellerHome">Dashboard</Link>
+                </li>
+              )}
+              {user && !isSeller && (
+                <li>
+                  <Link to="/dashboard/userHome">Dashboard</Link>
+                </li>
+              )}
+
               <li>
                 <Link onClick={handleLogOut}>Log Out</Link>
               </li>

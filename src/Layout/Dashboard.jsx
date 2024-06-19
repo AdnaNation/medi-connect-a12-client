@@ -19,26 +19,39 @@ const Dashboard = () => {
       <div className="flex">
         <div className="min-h-screen p-3 space-y-2 w-60 bg-red-500 ">
           <div className="divide-y dark:divide-gray-300">
-            {isSeller && (
-              <ul className="pt-2 pb-4 space-y-5 text-lg">
-                <li className="dark:bg-gray-100 dark:text-gray-900">
-                  <NavLink to="/dashboard">Seller Home</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/manage-medicines">
-                    Manage Medicines
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/payment">Payment History</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/sellerAdvertise">
-                    Ask For Advertisement
-                  </NavLink>
-                </li>
-              </ul>
-            )}
+            <ul className="pt-2 pb-4 space-y-5 text-lg">
+              {isSeller ? (
+                <>
+                  <li className="dark:bg-gray-100 dark:text-gray-900">
+                    <NavLink to="/dashboard/sellerHome">Seller Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/dashboard/manage-medicines">
+                      Manage Medicines
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/dashboard/payment">Payment History</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/dashboard/sellerAdvertise">
+                      Ask For Advertisement
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <NavLink to="/dashboard/userHome">User Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/dashboard/paymentHistory">
+                      Payment History
+                    </NavLink>
+                  </li>
+                </>
+              )}
+            </ul>
             <ul className="pt-4 pb-2 space-y-1 text-lg">
               <li>
                 <Link className="flex gap-1 items-center" to="/">
