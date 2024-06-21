@@ -235,7 +235,7 @@ const ManageMedicines = () => {
         <table className="table table-zebra">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-orange-300">
               <th></th>
               <th>Name</th>
               <th>Generic Name</th>

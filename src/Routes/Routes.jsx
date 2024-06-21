@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import AdminHome from "../pages/AdminHome";
 import Cart from "../pages/Cart";
 import Invoice from "../pages/Dashboard/Invoice";
 import ManageMedicines from "../pages/Dashboard/ManageMedicines";
@@ -15,6 +16,7 @@ import LogIn from "../pages/LogIn";
 import MedicineCategory from "../pages/MedicineCategory";
 import Shop from "../pages/Shop";
 import SignUp from "../pages/SignUp";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
 
@@ -77,6 +79,15 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // admin routes
+      {
+        path: "adminHome",
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
       // seller routes
       {
         path: "sellerHome",

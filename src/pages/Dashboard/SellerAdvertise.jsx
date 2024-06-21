@@ -49,7 +49,7 @@ const SellerAdvertise = () => {
         <table className="table table-zebra">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-orange-300">
               <th></th>
               <th>Image</th>
               <th>Name</th>

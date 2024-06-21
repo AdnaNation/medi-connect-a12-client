@@ -1,6 +1,7 @@
 import { IoCartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 // import avatarImg from "../../src/assets/non-user.jpg";
+import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
 import useSeller from "../hooks/useSeller";
@@ -8,6 +9,7 @@ import useSeller from "../hooks/useSeller";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isSeller] = useSeller();
+  const [isAdmin] = useAdmin();
   const [cart] = useCart();
   const handleLogOut = () => {
     logOut();
@@ -43,7 +45,7 @@ const Navbar = () => {
 
       <li>
         <div className="dropdown dropdown-hover dropdown-bottom">
-          <div tabIndex={0} role="button" className="m-1">
+          <div tabIndex={0} role="button">
             Language
           </div>
           <ul
@@ -88,7 +90,9 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-platypi">MediConnect</a>
+        <Link to="/" className="btn btn-ghost text-xl font-platypi">
+          MediConnect
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -108,14 +112,19 @@ const Navbar = () => {
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-28 text-left text-black"
             >
               <li>Update Profile</li>
-              {user && isSeller && (
+              {user && isSeller && !isAdmin && (
                 <li>
                   <Link to="/dashboard/sellerHome">Dashboard</Link>
                 </li>
               )}
-              {user && !isSeller && (
+              {user && !isSeller && !isAdmin && (
                 <li>
                   <Link to="/dashboard/userHome">Dashboard</Link>
+                </li>
+              )}
+              {user && !isSeller && isAdmin && (
+                <li>
+                  <Link to="/dashboard/adminHome">Dashboard</Link>
                 </li>
               )}
 

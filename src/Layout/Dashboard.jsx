@@ -1,17 +1,14 @@
 import { FaHome } from "react-icons/fa";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import DashboardNav from "../Shared/DashboardNav";
 import BlankSpace from "../components/BlankSpace";
-import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
 import useSeller from "../hooks/useSeller";
 
 const Dashboard = () => {
-  const { logOut } = useAuth();
   const [isSeller] = useSeller();
+  const [isAdmin] = useAdmin();
 
-  const handleLogOut = () => {
-    logOut();
-  };
   return (
     <div>
       <DashboardNav></DashboardNav>
@@ -23,48 +20,71 @@ const Dashboard = () => {
               {isSeller ? (
                 <>
                   <li className="dark:bg-gray-100 dark:text-gray-900">
-                    <NavLink to="/dashboard/sellerHome">Seller Home</NavLink>
+                    <Link className="btn btn-ghost" to="/dashboard/sellerHome">
+                      Seller Home
+                    </Link>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/manage-medicines">
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/manage-medicines"
+                    >
                       Manage Medicines
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/purchaseHistory">
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/purchaseHistory"
+                    >
                       Payment History
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/sellerAdvertise">
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/sellerAdvertise"
+                    >
                       Ask For Advertisement
-                    </NavLink>
+                    </Link>
+                  </li>
+                </>
+              ) : isAdmin ? (
+                <>
+                  <li>
+                    <Link className="btn btn-ghost" to="/dashboard/adminHome">
+                      Admin Home
+                    </Link>
                   </li>
                 </>
               ) : (
                 <>
                   <li>
-                    <NavLink to="/dashboard/userHome">User Home</NavLink>
+                    <Link className="btn btn-ghost" to="/dashboard/userHome">
+                      User Home
+                    </Link>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/paymentHistory">
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/paymentHistory"
+                    >
                       Payment History
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/invoice">Invoice</NavLink>
+                    <Link className="btn btn-ghost" to="/dashboard/invoice">
+                      Invoice
+                    </Link>
                   </li>
                 </>
               )}
             </ul>
             <ul className="pt-4 pb-2 space-y-1 text-lg">
               <li>
-                <Link className="flex gap-1 items-center" to="/">
+                <Link className="flex gap-1 items-center btn-ghost" to="/">
                   <FaHome></FaHome> Home
                 </Link>
-              </li>
-              <li>
-                <button onClick={handleLogOut}>Logout</button>
               </li>
             </ul>
           </div>
