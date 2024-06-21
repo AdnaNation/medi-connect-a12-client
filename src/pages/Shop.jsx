@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { TbCurrencyTaka } from "react-icons/tb";
 import { TiEyeOutline } from "react-icons/ti";
 import Swal from "sweetalert2";
 import BlankSpace from "../components/BlankSpace";
@@ -39,6 +38,7 @@ const Shop = () => {
       image: medicine.image,
       medicineId: medicine._id,
       email: user.email,
+      sellerEmail: medicine.sellerEmail,
       medicineName: medicine.medicineName,
       unitPrice: medicine.unitPrice,
       discount: medicine.discount,
@@ -54,7 +54,7 @@ const Shop = () => {
           icon: "success",
           title: `${medicine.medicineName} added to your cart`,
           showConfirmButton: false,
-          timer: 1100,
+          timer: 900,
         });
         // refetch cart to update the cart items count
         refetch();
@@ -130,7 +130,7 @@ const Shop = () => {
                 <p className="font-bold">{medicine.description}</p>
                 <p>Mass Unit: {medicine.massUnit}</p>
                 <p className="flex items-center">
-                  Unit Price: {medicine.unitPrice} <TbCurrencyTaka />
+                  Unit Price: ${medicine.unitPrice}
                 </p>
               </div>
             </div>

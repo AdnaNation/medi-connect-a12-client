@@ -17,19 +17,29 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/shop">Shop</Link>
-      </li>
-      <li>
-        <Link to="/category">Category</Link>
-      </li>
+      {user && (
+        <>
+          <li>
+            <Link to="/shop">Shop</Link>
+          </li>
+          <li>
+            <Link to="/category">Category</Link>
+          </li>
 
-      <li>
-        <Link to="/cart">
-          <IoCartOutline className="pt-0 text-xl" />
-          {user ? <sup>{cart.length}</sup> : <sup>0</sup>}
-        </Link>
-      </li>
+          <li>
+            <Link to="/cart">
+              <div className="flex">
+                <IoCartOutline className="pt-0 text-xl" />
+                {user && (
+                  <sup className="badge badge-sm indicator-item">
+                    {cart.length}
+                  </sup>
+                )}
+              </div>
+            </Link>
+          </li>
+        </>
+      )}
 
       <li>
         <div className="dropdown dropdown-hover dropdown-bottom">

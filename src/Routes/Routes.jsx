@@ -2,9 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import Cart from "../pages/Cart";
+import Invoice from "../pages/Dashboard/Invoice";
 import ManageMedicines from "../pages/Dashboard/ManageMedicines";
 import CheckOut from "../pages/Dashboard/Payment/CheckOut";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory";
+import PurchaseHistory from "../pages/Dashboard/PurchaseHistory";
+import SellerAdvertise from "../pages/Dashboard/SellerAdvertise";
 import SellerHome from "../pages/Dashboard/SellerHome";
 import UserHome from "../pages/Dashboard/UserHome";
 import Home from "../pages/Home/Home";
@@ -91,6 +94,22 @@ const router = createBrowserRouter([
           </SellerRoute>
         ),
       },
+      {
+        path: "purchaseHistory",
+        element: (
+          <SellerRoute>
+            <PurchaseHistory></PurchaseHistory>
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "sellerAdvertise",
+        element: (
+          <SellerRoute>
+            <SellerAdvertise></SellerAdvertise>
+          </SellerRoute>
+        ),
+      },
 
       // user routes
       {
@@ -106,6 +125,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PaymentHistory></PaymentHistory>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "invoice",
+        element: (
+          <PrivateRoute>
+            <Invoice></Invoice>
           </PrivateRoute>
         ),
       },

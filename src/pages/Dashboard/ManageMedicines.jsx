@@ -1,12 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { TbFidgetSpinner } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SectionTitle from "../../components/SectionTitle";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useMedicines from "../../hooks/useMedicines";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -17,15 +18,7 @@ const ManageMedicines = () => {
   const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  const { data: medicines = [], refetch } = useQuery({
-    queryKey: ["medicines", user?.email],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/medicines/${user.email}`);
-
-      return res.data;
-    },
-  });
+  const [medicines, isMedicineLoading, refetch] = useMedicines();
 
   const onSubmit = async (data) => {
     // console.log(data);
@@ -230,6 +223,11 @@ const ManageMedicines = () => {
       </dialog>
 
       <SectionTitle heading="My Medicine List"></SectionTitle>
+      {!isMedicineLoading && (
+        <div>
+          <TbFidgetSpinner className="text-4xl mx-auto text-center animate-spin" />
+        </div>
+      )}
       <p className=" text-left font-bold underline ml-1">
         My Medicines: ({medicines.length})
       </p>
@@ -252,9 +250,9 @@ const ManageMedicines = () => {
                 <th>{index + 1}</th>
                 <td>{medicine.medicineName}</td>
                 <td>{medicine.genericName}</td>
-                <td>{medicine.company.split(" ")[0]}</td>
+                <td>{medicine?.company?.split(" ")[0]}</td>
                 <td>{medicine.massUnit}</td>
-                <td>{medicine.unitPrice} tk</td>
+                <td>${medicine.unitPrice}</td>
               </tr>
             ))}
           </tbody>

@@ -161,7 +161,7 @@ const Cart = () => {
           </Link>
         ) : (
           <button disabled className="btn btn-primary">
-            Pay
+            Checkout
           </button>
         )}
       </div>
