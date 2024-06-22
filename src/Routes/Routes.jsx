@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
-import AdminHome from "../pages/AdminHome";
 import Cart from "../pages/Cart";
+import AdminHome from "../pages/Dashboard/AdminHome";
 import Invoice from "../pages/Dashboard/Invoice";
 import ManageMedicines from "../pages/Dashboard/ManageMedicines";
+import ManageUsers from "../pages/Dashboard/ManageUsers";
 import CheckOut from "../pages/Dashboard/Payment/CheckOut";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory";
 import PurchaseHistory from "../pages/Dashboard/PurchaseHistory";
@@ -85,6 +86,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-users",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
           </AdminRoute>
         ),
       },

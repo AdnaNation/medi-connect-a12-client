@@ -56,6 +56,46 @@ const Dashboard = () => {
                       Admin Home
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/manage-users"
+                    >
+                      Manage Users
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/manage-category"
+                    >
+                      Manage Category
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/manage-payment"
+                    >
+                      Payment Management
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/sales-report"
+                    >
+                      Sales Report
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="btn btn-ghost"
+                      to="/dashboard/banner-advertise"
+                    >
+                      Banner Advertise
+                    </Link>
+                  </li>
                 </>
               ) : (
                 <>
