@@ -1,6 +1,7 @@
 import BlankSpace from "../../components/BlankSpace";
-import DiscountProducts from "../DiscountProducts";
+import Accordian from "./Accordian";
 import CategorySection from "./CategorySection";
+import DiscountMedicine from "./DiscountMedicine";
 import Slider from "./Slider";
 
 const Home = () => {
@@ -9,7 +10,8 @@ const Home = () => {
       <BlankSpace></BlankSpace>
       <Slider></Slider>
       <CategorySection></CategorySection>
-      <DiscountProducts></DiscountProducts>
+      <DiscountMedicine></DiscountMedicine>
+      <Accordian></Accordian>
     </div>
   );
 };

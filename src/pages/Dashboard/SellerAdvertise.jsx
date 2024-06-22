@@ -13,7 +13,11 @@ const SellerAdvertise = () => {
   //   console.log(discounted);
 
   const handleAsk = async (medicine) => {
-    const medicineRes = await axiosSecure.post("/advertise", medicine);
+    const advertise = {
+      ...medicine,
+      isAdvertised: false,
+    };
+    const medicineRes = await axiosSecure.post("/advertise", advertise);
     if (medicineRes.data.insertedId) {
       Swal.fire({
         position: "top-end",

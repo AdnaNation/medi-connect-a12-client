@@ -25,10 +25,6 @@ const Navbar = () => {
             <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <Link to="/category">Category</Link>
-          </li>
-
-          <li>
             <Link to="/cart">
               <div className="flex">
                 <IoCartOutline className="pt-0 text-xl" />

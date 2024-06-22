@@ -1,25 +1,45 @@
+import { useQuery } from "@tanstack/react-query";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+
 const Slider = () => {
+  const axiosPublic = useAxiosPublic();
+  const { data: slider = [] } = useQuery({
+    queryKey: ["slider"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/slider");
+      return res.data;
+    },
+  });
   return (
-    <div
-      className="bg-no-repeat w-full h-[700px]"
-      style={{
-        backgroundImage:
-          "url(https://i.ibb.co/gSzY2t4/innocent-peoples-dna-400x267.jpg)",
-        backgroundSize: "100% 700px",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="ml-9 mb-20 bg-opacity-100 w-full h-full">
-        <div>
-          <h1 className="lg:mb-5 mb-3 text-xl md:text-4xl font-bold">
-            COVID-19 RT-PCR Test
-          </h1>
-          <p className="font-bold">
-            Get your COVID-19 RT-PCR test with fast and reliable results.
-          </p>
-        </div>
-      </div>
-    </div>
+    <>
+      <section>
+        <Swiper
+          spaceBetween={80}
+          centeredSlides={true}
+          autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper  lg:w-[800px] h-[450px] mb-[56px]"
+        >
+          {slider.map((item) => (
+            <SwiperSlide key={item._id}>
+              <img className=" md:w-[55%] mx-auto" src={item.image} alt="" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+    </>
   );
 };
 

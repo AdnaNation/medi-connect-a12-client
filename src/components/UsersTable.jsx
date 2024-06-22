@@ -22,7 +22,7 @@ const UsersTable = ({ users, heading, refetch }) => {
       }
     });
 
-    console.log(email, role);
+    // console.log(email, role);
   };
   return (
     <div>

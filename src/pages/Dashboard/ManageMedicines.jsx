@@ -7,11 +7,13 @@ import SectionTitle from "../../components/SectionTitle";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCategory from "../../hooks/useCategory";
 import useMedicines from "../../hooks/useMedicines";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const ManageMedicines = () => {
+  const [categories] = useCategory();
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
@@ -110,12 +112,11 @@ const ManageMedicines = () => {
                   <option disabled value="default">
                     Select a category
                   </option>
-                  <option value="Tablet">Tablet</option>
-                  <option value="Syrup">Syrup</option>
-                  <option value="Capsule">Capsule</option>
-                  <option value="Injection">Injection</option>
-                  <option value="Inhaler">Inhaler</option>
-                  <option value="Ointment">Ointment</option>
+                  {categories.map((category) => (
+                    <option value={category.categoryName} key={category._id}>
+                      {category.categoryName}
+                    </option>
+                  ))}
                 </select>
               </div>
 

@@ -4,11 +4,15 @@ import Main from "../Layout/Main";
 import Cart from "../pages/Cart";
 import AdminHome from "../pages/Dashboard/AdminHome";
 import Invoice from "../pages/Dashboard/Invoice";
+import ManageBanner from "../pages/Dashboard/ManageBanner";
+import ManageCategory from "../pages/Dashboard/ManageCategory";
 import ManageMedicines from "../pages/Dashboard/ManageMedicines";
 import ManageUsers from "../pages/Dashboard/ManageUsers";
 import CheckOut from "../pages/Dashboard/Payment/CheckOut";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory";
+import PaymentManagement from "../pages/Dashboard/PaymentManagement";
 import PurchaseHistory from "../pages/Dashboard/PurchaseHistory";
+import SalesReport from "../pages/Dashboard/SalesReport";
 import SellerAdvertise from "../pages/Dashboard/SellerAdvertise";
 import SellerHome from "../pages/Dashboard/SellerHome";
 import UserHome from "../pages/Dashboard/UserHome";
@@ -63,7 +67,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/category",
+        path: "/categoryDetails/:category",
         element: (
           <PrivateRoute>
             <MedicineCategory></MedicineCategory>
@@ -94,6 +98,38 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-payment",
+        element: (
+          <AdminRoute>
+            <PaymentManagement></PaymentManagement>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-category",
+        element: (
+          <AdminRoute>
+            <ManageCategory></ManageCategory>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "banner-advertise",
+        element: (
+          <AdminRoute>
+            <ManageBanner></ManageBanner>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "sales-report",
+        element: (
+          <AdminRoute>
+            <SalesReport></SalesReport>
           </AdminRoute>
         ),
       },
