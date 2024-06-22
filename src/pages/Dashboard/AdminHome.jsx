@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 import { FaDollarSign } from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle";
 import useAuth from "../../hooks/useAuth";
@@ -17,6 +18,9 @@ const AdminHome = () => {
   });
   return (
     <div>
+      <Helmet>
+        <title>MediConnect || Admin Home</title>
+      </Helmet>
       <h2 className="text-2xl font-bold font-platypi">
         Welcome <span className="text-red-400">{user.displayName}</span>
       </h2>

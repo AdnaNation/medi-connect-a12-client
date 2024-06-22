@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { FiMinus } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
 import { RxCrossCircled } from "react-icons/rx";
@@ -83,6 +84,9 @@ const Cart = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>MediConnect || Cart</title>
+      </Helmet>
       <BlankSpace></BlankSpace>
       <SectionTitle heading="My Cart"></SectionTitle>
 

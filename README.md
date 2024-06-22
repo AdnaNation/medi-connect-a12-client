@@ -1,6 +1,6 @@
 # MediConnect
 
-Visit our website: [MediConnect ](https://medi-connect-be18c.web.app) Adnan27@
+Visit our website: [MediConnect ](https://medi-connect-be18c.web.app)
 
 | Role   | Email                      | Password   |
 | :----- | :------------------------- | :--------- |

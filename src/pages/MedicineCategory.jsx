@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { TiEyeOutline } from "react-icons/ti";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -71,6 +72,9 @@ const MedicineCategory = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>MediConnect || Category</title>
+      </Helmet>
       <BlankSpace></BlankSpace>
       <SectionTitle heading={category}></SectionTitle>
       <div className="overflow-x-auto">

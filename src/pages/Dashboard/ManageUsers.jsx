@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Marquee from "react-fast-marquee";
+import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../components/SectionTitle";
 import UsersTable from "../../components/UsersTable";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -19,6 +20,9 @@ const ManageUsers = () => {
   // console.log(admins, sellers, user);
   return (
     <div>
+      <Helmet>
+        <title>MediConnect || Manage Users</title>
+      </Helmet>
       <SectionTitle heading="users"></SectionTitle>
       <Marquee>If you change your role you will be logged out first.</Marquee>
 

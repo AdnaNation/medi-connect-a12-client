@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { TiEyeOutline } from "react-icons/ti";
 import Swal from "sweetalert2";
 import BlankSpace from "../components/BlankSpace";
@@ -63,6 +64,9 @@ const Shop = () => {
   };
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>MediConnect || Shop</title>
+      </Helmet>
       <BlankSpace></BlankSpace>
       <SectionTitle heading="Medicines List"></SectionTitle>
       <p className=" text-left font-bold underline ml-1">
